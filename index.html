@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<!--Written by Onur Elbirlik-2016-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <title>GittiGidiyor Trend Chart</title>
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <script src="external/jquery/jquery.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="word25.json">
+    </script>
+    <script>
+        var stop=5;
+        //color shuffling method to change color palette array
+        function colorShuffle(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+        //jquery color changer method,using random "i" number.
+        $(document).ready(function () {
+            colors = ['#EC3F44', '#F4AD26', '#2669B2', '#7FBB42']
+            var i = Math.floor((Math.random() * colors.length));
+            colorChanger = function (idPick) {
+                colorShuffle(colors);
+                $('#' + idPick).css('background-color', '"'+colors[i]+'"');
+            }
+        });
+
+    </script>
+    <script>
+        var randomId8;
+        //function to change div's innerhtml, selecting different trend words from json file and assigning them.
+        //"word5" is the word that is assigned to that id. Since we are gonna change them, we are holding them in a variable.
+        function innerHTMLChanger() {
+            var boxLength = document.getElementsByClassName('divContent-content').length;
+            var randomId7 = Math.floor((Math.random() * boxLength) + 1);
+            var randomId2 = Math.floor((Math.random() * boxLength) + 1);
+            //this if condition is for our logo. This "if" checks if we  deleted the logo. If we did, logo appears in different random location.
+            if(randomId8!=null) {
+                var randomWord = Math.floor((Math.random() * word25.length));
+                var word5 = word25[randomWord].word;
+                colorChanger(randomId8);
+                if(document.getElementById(randomId8)!=null) {
+                    document.getElementById(randomId8).innerHTML = printFunction(word25[randomWord].word.fontcolor("white").bold(), word5);
+                }
+            }
+            var randomWord = Math.floor((Math.random() * word25.length));
+            var word5=word25[randomWord].word;
+            var wordCheck=randomWord;
+            document.getElementById(randomId2).innerHTML = printFunction(word25[randomWord].word.fontcolor("white").bold(), word5);
+            colorShuffle(colors);
+            colorChanger(randomId2);
+            //if are showing 1x1 box,which means showing only one word, we are trying avoid showing same word two in a row.
+            if(stop ==1) {
+                randomWord = Math.floor((Math.random() * word25.length));
+                if (wordCheck == randomWord) {
+                    randomWord= Math.floor((Math.random() * word25.length));
+                }
+                word5=word25[randomWord].word;
+                document.getElementById(randomId7).innerHTML = printFunction(word25[randomWord].word.fontcolor("white").bold(), word5);
+                colorShuffle(colors);
+                colorChanger(randomId7);
+            }
+            else
+            {
+                //if we are showing 2x2 or more divs,we should increase the number of changing innerhtmls.
+                for(var i=2; i<stop; i++)
+                {
+                    randomIdCount = Math.floor((Math.random() * boxLength) + 1);
+                    var randomWord = Math.floor((Math.random() * word25.length));
+                    var word5 = word25[randomWord].word;
+                    document.getElementById(randomIdCount).innerHTML = printFunction(word25[randomWord].word.fontcolor("white").bold(), word5);
+                    colorShuffle(colors);
+                    colorChanger(randomIdCount);
+                }
+                //adding logo to one of the boxes,randomly.
+                randomId8 = Math.floor((Math.random() * boxLength) + 1);
+                document.getElementById(randomId8).innerHTML = '<img id="one" style="width: 90%; padding-top:17%; padding-left: 5%;  display: none; background-color: snow;" src="' +'logo.png"'+' />';
+                //using jquery fadeIn method to make logo fadeIn during changes.
+                $("#one").fadeIn(1000);
+                $('#' + randomId8).css('background-color', "white");
+            }
+        }
+        //function is repeating in every 3 seconds.
+        function innerInterval() {
+            myVar = setInterval(innerHTMLChanger, 3000);
+        }
+    </script>
+
+</head>
+<script>
+</script>
+<div class="demo">
+    <body style="margin: 0%" onload="createDiv()">
+    <div class="navigation" style="position: absolute">
+        
+        <!--buttons to navigate 1x1 2x2 3x3 4x4 5x5 divs.-->
+        
+        <button class="myButton" type="button" onclick="changeSize(1)">1</button>
+        <button class="myButton" type="button" onclick="changeSize(2)">2</button>
+        <button class="myButton" type="button2" onclick="changeSize(3)">3</button>
+        <button class="myButton" type="button3" onclick="changeSize(4)">4</button>
+        <button class="myButton" type="button4" onclick="changeSize(5)">5</button>
+    </div>
+    <script>
+        innerInterval();
+        // setting position of the boxes
+        $('.navigation').css('top:15px; left:10px;')
+        var global1 = {};
+        global1.id = 5;
+        //if we are going to change the size, we should delete the previoous one and hold the new size in a variable.
+        function changeSize(size) {
+        stop=size;
+            deleteCall();
+            global1.id = size;
+            createDiv();
+        }
+        //we are choosing the css class of the divs, according to its size.
+        function getClass() {
+            var classResult = '"font' + global1.id + '"';
+            return classResult;
+        }
+        //deleting function for every div,setting size to initial,which is zero.
+        function deleteCall() {
+            for (var i = 1; i <= global1.id * global1.id; i++) {
+                document.getElementById(i).remove();
+                var boxLength = document.getElementsByClassName('divContent-content').length;
+                boxLength = 0;
+            }
+        }
+    </script>
+    <script>
+        //print function to initialize the inner htmls of the divs.
+        function printFunction(inner, word5) {
+            var cursor = '|';
+            if(global1.id==1)
+            {
+                var inner2 = '<h2>' + '<a class=' + getClass() + ' href="http://www.gittigidiyor.com/arama/?k=' + word5 + '"' + '>' + inner + '</a>' + '<span style="padding-left: 0px;" class=' + getClass() + '>' + cursor.bold().fontcolor("white");
+                +'</span></h2>';
+            }
+            else
+            {
+                var inner2 = '<h1>' + '<a class=' + getClass() + ' href="http://www.gittigidiyor.com/arama/?k=' + word5 + '"' + '>' + inner + '</a>' + '<span style="padding-left: 0px;" class=' + getClass() + '>' + cursor.bold().fontcolor("white");
+                +'</span></h1>';
+            }
+            return inner2;
+        }
+        //create function for our divs.
+        function createDiv() {
+            var idCount = 1;
+            var prev;
+            //initially we are showing 5x5 divs in the screen, which means global1.id is initially 5.but user can change the size and therefore can change the global1.id
+            for (var j = 0; j < global1.id; j++) for (var i = 0; i < global1.id; i++) {
+                idCount = document.getElementsByClassName('divContent-content').length + 1;
+                //creating div element
+                var div = document.createElement("div");
+                //width of the element is iniialized according to div size and also setting witdh using percentage.
+                var width = 100 / global1.id;
+                //setting height using "vh" to make our project compatible with every size of the browser.
+                var height2 = width + 'vh';
+                width += '%';
+                div.style.width = width;
+                div.style.height = height2;
+                div.style.float = 'left';
+                div.setAttribute('verticalAlign', 'middle');
+
+                var randomWord = Math.floor((Math.random() * word25.length));
+                var word5 = word25[randomWord].word;
+                div.innerHTML = printFunction(word25[randomWord].word.fontcolor("white").bold(), word5);
+                div.setAttribute('id', idCount);
+                //setting the class of the div.
+                var animationClass = Math.floor(Math.random() * 5) + 1;
+                while (prev != null && prev == animationClass) {
+                    animationClass = Math.floor(Math.random() * 5) + 1;
+                }
+                div.setAttribute('class', 'box divContent-content divContent' + animationClass);
+                document.body.appendChild(div);
+                colorChanger(idCount);
+            }
+
+        }
+    </script>
+    </body>
+
