@@ -21,7 +21,7 @@ Working Instructions
 - Attention! Fullscreen use is highly recommended for better performance!
 
 To execute project Using mongodb with importing top searched words from local database:
-=====================================================================================
+
 -  1- Open GG-Trend-Chart-Server-Version folder in repository of this project.
 -  2- Execute server.js using mongodb. Browsing localhost:8080 on your browser, will execute this projects index.html, while importing top searched words
    from local database.
@@ -34,6 +34,11 @@ Used Technologies and Resources
 - JQuery UI 1.12 API (http://api.jqueryui.com/)
 - Font was used from the google font resources (https://fonts.googleapis.com/css?family=Open+Sans)
 - Typing animation was inspired from Lea Verou’s project. (http://goo.gl/Ef9UY4)
+
+  For server based version:
+-       NodeJS
+-       Express
+-       MongoDB
 
 
 
