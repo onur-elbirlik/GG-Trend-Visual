@@ -1,0 +1,124 @@
+body {font-family: 'Open Sans', sans-serif; vertical-align: middle; background-color: white;}
+/*h1 tag is for the  typing animation,there are steps for it .*/
+h1{
+	vertical-align:middle;
+	white-space:nowrap;
+	overflow: hidden;
+	width: 50ch;
+    max-width: 100%;
+	animation: type 3s steps(100, end);
+
+}
+
+h1:nth-child(2){
+  animation: type2 3s steps(100, end);
+}
+
+
+/*span tag is part of the typing animation, it generates the blinking part of it*/
+span{
+  animation: blink 1s infinite;
+}
+
+@keyframes type{ 
+  from { width: 0; } 
+} 
+
+@keyframes type2{
+  0%{width: 0%;}
+  50%{width: 0%h;}
+  100%{ width: 100%; }
+} 
+
+@keyframes blink{
+  to{opacity: .0;}
+}
+
+/*This is the style properties for 5x5  visual*/
+.font5
+{
+    font-size:2vw;
+    line-height:400%;
+    padding-left: 10px;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-decoration:none;
+}
+/*This is the style properties for 4x4 visual*/
+.font4
+{
+    text-decoration:none;
+    font-size:2.5vw;
+    line-height:400%;
+    padding-left: 10px;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+/*This is the style properties for 3x3 visual*/
+.font3
+{
+    text-decoration:none;
+    font-size:3.5vw;
+    line-height:400%;
+    padding-left: 9px;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+/*This is the style properties for 2x2  visual*/
+.font2
+{
+    text-decoration:none;
+    font-size:5vw;
+    line-height:500%;
+    padding-left: 10px;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+/*This is the style properties for 1x1  visual*/
+.font1
+{
+    text-decoration:none;
+    font-size:9vw;
+    line-height:600%;
+    padding-left: 50px;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
+
+}
+/*This is the style properties for the buttons on the top left corner*/
+.myButton {
+    -moz-box-shadow:inset 0px 1px 0px -50px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px -50px #ffffff;
+    box-shadow:inset 0px 1px 0px -50px #ffffff;
+    background-color:transparent;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+    font-size:8px;
+    padding:4px 4px;
+    text-decoration:none;
+    text-shadow:none;
+}
+.myButton:hover {
+    background-color:transparent;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+/*This creates some changes about the typing animation for the 1x1 visual*/
+h2{
+    vertical-align:middle;
+    white-space:nowrap;
+    overflow: hidden;
+    width: 100ch;
+    max-width: 100%;
+    animation: type 1.5s steps(100, end);
+
+}
+
+h2:nth-child(2){
+    animation: type2 1.5s steps(100, end);
+}

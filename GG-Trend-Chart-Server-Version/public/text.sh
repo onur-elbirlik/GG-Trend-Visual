@@ -1,0 +1,1 @@
+mongoexport --db chart --collection word --file word.json
