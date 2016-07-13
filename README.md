@@ -12,6 +12,13 @@ Features
 - Random top searched word changes according to a time interval from GittGidiyor top searched word database.
 - Clicking on words, will lead user to search that word on GittiGidiyor website,directly.
 
+   To execute project Using mongodb with importing top searched words from local database:
+=====================================================================================
+-  1- Open GG-Trend-Chart-Server-Version folder in repository of this project.
+-  2- Execute server.js using mongodb. Browsing localhost:8080 on your browser, will execute this projects index.html, while importing top searched words
+   from local database.
+
+
 Working Instructions
 ====================
 
