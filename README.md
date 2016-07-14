@@ -15,7 +15,7 @@ Features
 Working Instructions
 ====================
 
-- Opening the index.html file is enough for project to open.
+- Opening the index.html file is enough for project to execute.
 - On top left corner, there are buttons such as 1,2,3,4,5 .These buttons change the visualisation like 1x1 2x2 3x3 4x4 5x5 box visualisation.
 - User can hit the button freely, clicking another button will delete the previous one.
 - Attention! Fullscreen use is highly recommended for better performance!
